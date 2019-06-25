@@ -1,0 +1,135 @@
+X path 
+
+Absolute Xpath: It begin with the root node and is prefixed with "/".
+
+/html/body/div/table/tbody/tr[1]/td[2]/input
+
+Relative Xpath: It begin with any node and is prefixed with "//".
+
+//input [@id='name']
+
+Xpath Functions:
+
+Contains() functions:
+
+//input[contains(@class,'textbox')]
+
+Starts -with function:
+
+id = test_456
+id=test_789
+
+//input [starts-with(@id,'test_')]
+
+End - with functions:
+
+id=1234_test_t
+id=2678_test_t
+
+//input[ends-with(@id,'_test_t')]
+
+Text() function:
+
+//input[text()='username']
+
+Xpath Operators:
+
+OR = One condition should be true
+
+//input[@type='image'or @name='submit']
+
+AND = Both condiitons should be true
+
+//input [@type='image' and @name='submit']
+
+Union = Returns union of two node-sets
+
+//input[text()='username']|//input[@name='username']
+
+
+Xpath Axes:
+
+An axis indicates which nodes relative to context node should be included in the search
+
+There are 13 Xpath axes
+
+1.Self = Self returns the current node
+
+syntax://tagname[@attr='value']/self::nodetag
+
+//input[@name='username']/self::input
+
+2. Child = Child returns all the children in the current node
+
+Syntax: //tagname[@attr='value']/child::tagname 
+
+//tbody/tr[1]/child::td
+
+3.Following = Select all the nodes that appear after the context node in the source document
+except descendant, attribute and namespace nodes 
+
+syntax: //tagname[@attr='value']/following::tagname
+
+//td[text()='username']/following::input
+
+4.Preceding = Select all the nodes that appear before the context node in the source document
+except ancestors, attribute and namespace nodes 
+
+syntax: //tagname[@attr='value']/preceding::tagname
+
+//input[@type='image']/preceding::input
+
+5.Following-sibling = select all the nodes that have same parent as context node and appear
+after the context node.
+
+syntax: //tagname[@attr='value']/following-sibling::tagname
+
+//tr/td[text()='username']/following-sibling::td
+
+6.preceding-sibling= select all the nodes that have same parent as context node and appear
+before the context node.
+
+syntax://tagname[@attr='value']/preceding-sibling::tagname
+
+//table/tbody/tr[3]/preceding-sibling::tr/td
+
+7. Ancestor= Select all the ancestors of the context node beginning with the parent node and traveliing
+to the root node
+
+Syntax: //tagname[@attr='value']/ancestor::tagname
+
+//input[@name='username']/ancestor::table
+
+8. Ancestor or self = Selects the context node and its ancestors,including the root node
+
+syntax: //tagname[@attr='value']/ancestor-or-self::tagname
+
+//input[@name='username']/ancestor-or-self::tr
+
+9.Descendant = Selects all the children (Children,Grandchildren,so on) of the context node
+
+syntax //tagname[@attr='value']/descendant::tagname
+
+//tbody/tr/descendant::td/input
+
+10. Descendant -or-self = Selects context node and all its descendants
+
+syntax : //tagname[@attr='value']/descendants-or-self::tagname
+
+//tbody/tr/descendant-or-self::tr
+
+
+11. Parent = Select parent of the context node
+
+syntax : //tagname[@attr='value']/parent::tagname
+
+//input[@type='image']/parent::*
+
+12. Attribute = indicates attributes of the context node
+denoted by @
+
+13. namespace = Indicates namespace nodes of the current node 
+node with attribute name as "xmlns" is namesapce node
+
+
+

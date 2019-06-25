@@ -1,0 +1,20 @@
+Cucumber Framework Components
+
+Feature File - It contains the explanation about the Test scenario
+Login Definition Class: It contain the Feature file scenario methods along with the Annotation @Given, @When,@Then.
+
+Test Runner Class:  It is the runner class it contains Feature file location, Glue - Step definition class name, Format - It give the test result in HTML format in Good Way.
+
+Cucumber Options:
+
+Dry Run: It checks and throw the alert when the feature file scenario is missed to convert in to methods on Definition class.
+DryRun = true;
+
+Feature: Feature file Path
+Glue: Step definition path
+MonoChrome: Display the output in console on readable format
+Monochrome = True.
+Format : It give the test report in Html, json format,xml format
+json:json_output/cucumber.json, junit:junit_xml/cucumber.xml
+Strict: It is used to throws error for undefined steps or method
+Tags: It run only the tagged name testcase eg: Tag = @smoke,@regression

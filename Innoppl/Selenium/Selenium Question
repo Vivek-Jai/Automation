@@ -1,0 +1,234 @@
+1. Difference between Selenium 2.0 and selenium 3.0
+
+Walk Through of Selenium 2.0
+
+-Minimum Java version required is below 1.8
+-Support Firefox browser version below 47.0
+-It supports IE Versions 7, 8, 9, 10 and 11. Version 11 requires additional configuration.
+-It supports HeadLess Browser with HtmlWebDriver
+-Last 2.x version was v2.53.0. This was a stable build means it has no major issues.
+-Selenium 2 supported selenium core for backward compatibility. 
+
+
+New Changes in Selenium 3.0
+
+-Minimum Java version required is 1.8+
+-Firefox 47.0.1 and before version would not need GeckoDriver.After 47+ need Geckodriver.
+-Selenium project will not actively support the WebDriver API.
+-The Selenium RC APIs are only available via the legacy-rc package.
+-Selenium 3.0 does not have HeadLess Driver (HtmlWebDriver)
+-Official support for IE browser requires 9 or above version.
+-No need to maximize the browser using driver.manage().window().maximize(); By default it will maximize the window.
+-Selenium RC core library won’t be supported.
+-Selenium WebDriver has become the W3C Standard.
+-All WebDrivers are moved out of selenium and vendors will be responsible for owning the drivers for maintenance.
+
+********************************************************************************************************************************
+
+2.Selenium Components?
+
+Selenium IDE, Selenium RC, Selenium Webdriver, Selenium Grid
+
+***************************************************************************************************************************************
+
+3.What are the benefits of Selenium automation?
+
+Open source, Cross-browser, Multi-language, Cross-platform
+
+***************************************************************************************************************************************
+
+4.What are some downsides of Selenium automation?
+
+- Doesn’t support automation of Windows applications
+- Can’t perform mobile automation on its own
+- Lacks a good built-in reporting
+- Can’t automate a captcha
+******************************************************************************************************************************************
+
+5. What programming languages does Selenium allow to use?
+
+Python, Java, C-Sharp, JavaScript, Ruby, PHP, Perl
+
+********************************************************************************************************************************************
+
+6.What are different types of Web Driver APIs supported in Selenium?
+
+|   WebDriver Name                 | WebDriver API                           | Supported Browser |
+
+    Gecko Driver                   | FirefoxDriver()                         | Firefox
+    Microsoft WebDriver            | InternetExplorerDriver()                | IE
+    Google Chrome Driver           | ChromeDriver()                          | Chrome
+    HTML Unit Driver               | WebClient()                             | {Chrome, FF, IE}
+    OperaChromium Driver           | ChromeDriver()                          | Opera
+    Safari Driver                  | SafariDriver()                          | Safari
+    Android Driver,                |  AndroidDriver()                        | Android browser
+    ios Driver                     | IOSDriver()                             | ios browser
+    EventFiringWebDriver           | EventFiringWebDriver()                  | ALL
+
+***********************************************************************************************************************************************
+
+7.Which of the WebDriver APIs is the fastest, and why?
+
+The technical reason is that the HTMLUnitDriver doesn’t execute in the browser. It employs a simple HTTP request-response mechanism for test case execution
+
+************************************************************************************************************************************************
+
+8.What do you know about Selenese?
+
+Selenium IDE has a built-in linguistic system known as Selenese. It is a collection of Selenium commands to perform actions on a web page.
+
+For example, it can detect broken links on a page, check the presence of a web element, Ajax, JavaScript alerts and a lot more. There are mainly three types of command in Selenese.
+
+Actions, Accessors, Assertions
+
+****************************************************************************************************************************************************
+
+9. What does a hub do in Selenium Grid?
+
+A hub is analogous to a server that drives the parallel test execution on different machines.
+
+*******************************************************************************************************************************************************
+
+10.What does a node do in Selenium Grid?
+
+--The machine we register to a hub represents a node.
+ 
+--The registration allows the grid to fetch node configuration and execute tests.
+ 
+--There could be multiple nodes that we can bind to a Selenium Grid.
+
+*******************************************************************************************************************************************************
+
+11.What are the locators in Selenium?
+
+ID, Name, CSS Selector, Xpath, ClassName, Tagname, LinkText, Partial Link Text
+
+*******************************************************************************************************************************************************
+
+12. What is the primary difference between the XPath and CSS selector?
+
+With the XPath, we can traverse both forward and backward whereas CSS selector only moves forward.
+
+****************************************************************************************************************************************************
+
+13. How do you pass credentials to an authentication popup in Selenium?
+
+http://userid:passcode@somesite.com
+
+***************************************************************************************************************************************************
+
+14 . What are the different exceptions available in Selenium?
+
+
+
+************************************************************************************************
+
+15.How is an Assert different from Verify?
+
+Assert: If the “assert” fails, then it will abort the test execution and continues with the next case.
+
+Verify: if the “verify” fails, then it won’t abort the test instead continues with the next step.
+
+**************************************************************************************************************************************************
+
+16. What are the different waits available in WebDriver?
+
+Implicit wait : Tells the webdriver to wait for the certail amount of time we set before throw exception.This wait applies to all the web element in a script.
+
+Code: 
+
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+Explict wait: An explicit wait tells webdriver to wait for a specific web element to occur.
+
+Code: 
+
+WebElement dynamicElement = (new WebDriverWait(driver, 15))
+ .until(ExpectedConditions.presenceOfElementLocated(By.id("dynamicElement")));
+ 
+Fluent wait: Let’s say you have an element which sometime appears in just 1 second and some time it takes minutes to appear. 
+
+In that case it is better to use fluent wait, as this will try to find element again and again until it find it or until the final timer runs out.
+
+Code: 
+
+Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)							
+			.withTimeout(30, TimeUnit.SECONDS) 			
+			.pollingEvery(5, TimeUnit.SECONDS) 			
+			.ignoring(NoSuchElementException.class);
+	WebElement clickseleniumlink = wait.until(new Function<WebDriver, WebElement>(){
+	
+		public WebElement apply(WebDriver driver ) {
+			return driver.findElement(By.xpath(" "))
+			clickseleniumlink.click();
+			
+			
+**************************************************************************************************************************************************** 
+
+17. How to enter text in the HTML text box without invoking the sendKeys()?
+
+JavascriptExecutor jscript = (JavascriptExecutor)webdriver;
+// Issue command to enter the text
+jscript.executeScript("document.getElementById('textbox').value = 'Some Text';");
+
+
+*******************************************************************************************************************************************************
+18. What is the principal difference between “GET” and “NAVIGATE” methods?
+
+The driver.get() method waits until the page finish loading.
+The driver.navigate() will only redirect and return immediately.
+
+********************************************************************************************************************************
+
+19.How to handle Web-based alerts/pop-ups in Selenium?
+
+    Dismiss(): It handles the alert by simulating the Cancel button.
+    Accept(): It handles the alert window by simulating the Okay button.
+    GetText(): You may call it to find out the text shown by the alert.
+    SendKeys(): This method simulates keystrokes in the alert window.
+*****************************************************************************************************************************************
+    
+20.What is a Page Object in Selenium WebDriver?
+
+Page Object is a class in POM corresponding to a web page. It captures the functionality as functions and objects as members.
+
+************************************************************************************************************************************
+
+21. What is a Page Factory in Selenium WebDriver?
+
+Page Factory is a method to set up the web elements within the page object.
+
+****************************************************************************************************************
+22. What are the challenges have you faced with Selenium? And how did you overcome them?
+
+
+
+********************************************************************************************************************
+
+23.Explain how can you find broken links in a page using Selenium WebDriver?
+
+24. What is parameterization in TestNG? How to pass parameters using testng.xml?
+
+public class ParameterizedTest1{
+ @Test
+ @Parameters("myName")
+ public void parameterTest(String myName) {
+ System.out.println("Parameterized value is : " + myName);
+ }
+ 
+ To pass parameters using testng.xml file, we need to use ‘parameters’ tag. Look at the below code for example:
+
+	<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+ <suite name=”CustomSuite">
+  <test name=”CustomTest”> 
+   <parameter name="myName" value=”John"/>
+    <classes>
+     <class name="ParameterizedTest1" />
+    </classes> 
+  </test>
+ </suite>
+ 
+ 25. 
+
+    
